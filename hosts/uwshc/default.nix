@@ -10,7 +10,13 @@
 {
   imports = [
     inputs.nixos-wsl.nixosModules.default
+    ../common/users/hcvst.nix
   ];
+
+  networking = {
+    hostName = "uwshc";
+    useDHCP = true;
+  };
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";
@@ -35,7 +41,7 @@
       la = "${pkgs.eza}/bin/eza -a";
       lt = "${pkgs.eza}/bin/eza --tree";
       lla = "${pkgs.eza}/bin/eza -la";
-      snrs = "sudo nixos-rebuild switch";
+      snrs = "sudo nixos-rebuild switch --flake ~/dev/nixos-root#uwshc";
       hi = "echo Hello, $USER!";
     };
   };
