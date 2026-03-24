@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./sway-requirements.nix
     ../common/users/hcvst.nix
   ];
 
@@ -59,9 +60,11 @@
     nixfmt
   ];
 
+  # ssh-keygen -y -f ~/.ssh/id_ed25519
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAoIcEYv9mjFujy7fWjMLFt27oGBCNufUHRjiY6hAzZ"
   ];
 
   system.stateVersion = "25.11";
+
 }
