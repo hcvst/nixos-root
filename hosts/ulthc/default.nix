@@ -1,11 +1,15 @@
 {
+  inputs,
   pkgs,
   ...
 }:
 {
   imports = [
-    ./sway-requirements.nix
     ../common/users/hcvst.nix
+    ./disko-config.nix
+    ./hardware-configuration.nix 
+    ./sway-requirements.nix
+    inputs.disko.nixosModules.disko
   ];
 
   boot.loader.grub = {
@@ -28,8 +32,8 @@
   environment.localBinInPath = true;
 
   fonts.packages = with pkgs; [
-    # nerd-fonts.fira-code
-    # nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
   programs.nh = {
