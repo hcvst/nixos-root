@@ -88,7 +88,7 @@
     libreoffice
     localsend
     prismlauncher
-    vim 
+    vim
     vlc
     zip
   ];
@@ -109,7 +109,11 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8000 22 53317 ];
+  networking.firewall.allowedTCPPorts = [
+    8000
+    22
+    53317
+  ];
   networking.firewall.allowedUDPPorts = [ 53317 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
