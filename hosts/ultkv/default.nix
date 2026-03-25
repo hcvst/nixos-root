@@ -5,12 +5,12 @@
 { hostname, config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./common/users/kvst.nix
-      ./common/users/hcvst.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../common/users/kvst.nix
+    ../common/users/hcvst.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
