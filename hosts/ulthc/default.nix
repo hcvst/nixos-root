@@ -9,7 +9,8 @@
     ../common/users/hcvst.nix
     ./disko-config.nix
     ./hardware-configuration.nix 
-    ./sway-requirements.nix
+    # ./sway-requirements.nix
+    ./niri-requirements.nix
   ];
 
   boot.loader.grub = {

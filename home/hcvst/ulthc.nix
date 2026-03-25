@@ -2,6 +2,6 @@
 {
   imports = [
     ./global
-    ./features/sway.nix
+    ./features/niri
   ];
 }
