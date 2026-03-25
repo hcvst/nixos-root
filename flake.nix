@@ -41,8 +41,13 @@
         modules = [./hosts/uwshc];
         specialArgs = {
           inherit inputs;
+        ultkv = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/ultkv ];
+          specialArgs = {
+            inherit inputs;
+          };
         };
       };
     };
-  };
 }

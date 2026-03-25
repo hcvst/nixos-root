@@ -12,6 +12,7 @@
 
   users.users.hcvst = {
     isNormalUser = true;
+    description = "Hans Christian v. Stockhausen";
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
     # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../home/hcvst/ssh.pub);
