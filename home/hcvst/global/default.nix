@@ -51,6 +51,7 @@
       [](color_orange)\
       $os\
       $username\
+      $hostname\
       [](bg:color_yellow fg:color_orange)\
       $directory\
       [](fg:color_yellow bg:color_aqua)\
@@ -123,6 +124,10 @@
       style_user = "bg:color_orange fg:color_fg0"
       style_root = "bg:color_orange fg:color_fg0"
       format = '[ $user ]($style)'
+
+      [hostname]
+      style = "bg:color_orange fg:color_fg0"
+      format = "[ $ssh_symbol$hostname ]($style)"
 
       [directory]
       style = "fg:color_fg0 bg:color_yellow"
