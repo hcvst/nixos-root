@@ -13,7 +13,7 @@
   ];
 
   wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  wsl.defaultUser = "hcvst";
 
   networking = {
     hostName = "uwshc";
