@@ -97,7 +97,7 @@
   # freezes while something is writing" feeling common on eMMC. Much more
   # impactful than CFQ or mq-deadline for desktop workloads on slow storage.
   # ---------------------------------------------------------------------------
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_6; # latests not avilable on hydra
   boot.kernelParams = [
     "mitigations=off"          # ~10-15% perf gain on N3350; acceptable on personal hw
     "nowatchdog"               # disable hardware watchdog timer, reduces interrupts
