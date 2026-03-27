@@ -1,4 +1,4 @@
-{ input, config, ... }:
+{ inputs, config, ... }:
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
@@ -14,13 +14,13 @@
     age.generateKey = false;
 
     secrets = {
-      "hashedPassword" = {
-        neededForUsers = true; # decrypted early enough for user activation
-      };
+      "hashedPassword".neededForUsers = true; # decrypted early enough for user activation
       # "hcvst/gh-token" = {
       #   owner = "hcvst";
       #   path  = "/persist/home/hcvst/.config/gh/hosts.yml";
       # };
     };
   };
+
+  users.users.hcvst.hashedPasswordFile = config.sops.secrets."hashedPassword".path;
 }

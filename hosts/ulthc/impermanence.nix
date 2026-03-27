@@ -10,6 +10,8 @@
     zfs rollback -r rpool/local/home@blank
   '';
 
+  fileSystems."/persist".neededForBoot = true;
+  
   environment.persistence."/persist" = {
     hideMounts = true;
 
