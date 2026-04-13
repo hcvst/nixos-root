@@ -2,9 +2,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   mod = "Mod4";
-in {
+in
+{
   programs.wofi = {
     enable = true;
     settings = {
@@ -17,22 +19,44 @@ in {
     config = {
       modifier = mod;
       keybindings = lib.attrsets.mergeAttrsList [
-        (lib.attrsets.mergeAttrsList (map (num: let
-          ws = toString num;
-        in {
-          "${mod}+${ws}" = "workspace ${ws}";
-          "${mod}+Ctrl+${ws}" = "move container to workspace ${ws}";
-        }) [1 2 3 4 5 6 7 8 9 0]))
+        (lib.attrsets.mergeAttrsList (
+          map
+            (
+              num:
+              let
+                ws = toString num;
+              in
+              {
+                "${mod}+${ws}" = "workspace ${ws}";
+                "${mod}+Ctrl+${ws}" = "move container to workspace ${ws}";
+              }
+            )
+            [
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              0
+            ]
+        ))
 
-        (lib.attrsets.concatMapAttrs (key: direction: {
+        (lib.attrsets.concatMapAttrs
+          (key: direction: {
             "${mod}+${key}" = "focus ${direction}";
             "${mod}+Ctrl+${key}" = "move ${direction}";
-          }) {
+          })
+          {
             h = "left";
             j = "down";
             k = "up";
             l = "right";
-          })
+          }
+        )
 
         {
           "${mod}+Return" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
@@ -56,12 +80,14 @@ in {
       ];
       focus.followMouse = false;
       startup = [
-        {command = "firefox";}
+        { command = "firefox"; }
       ];
       workspaceAutoBackAndForth = true;
     };
     systemd.enable = true;
-    wrapperFeatures = {gtk = true;};
+    wrapperFeatures = {
+      gtk = true;
+    };
   };
 
   programs.kitty = {
