@@ -10,6 +10,7 @@
 {
   imports = [
     inputs.nixos-wsl.nixosModules.default
+    ../common/global
     ../common/optional/comin.nix
     ../common/users/hcvst.nix
   ];
@@ -39,24 +40,6 @@
   programs.nix-ld.enable = true;
 
   services.cron.enable = true;
-
-  environment.systemPackages = with pkgs; [
-      bat
-    #   devenv
-    #   eza
-    #   fastfetch
-    #   fzf
-      gh
-    #   glow
-      helix
-    #   lld
-    #   mdcat
-      tree
-    #   wget
-    #   zk
-    # nvim
-    nixfmt
-  ];
 
   system.stateVersion = "25.11";
 }
