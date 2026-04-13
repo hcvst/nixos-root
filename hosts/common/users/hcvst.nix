@@ -15,8 +15,7 @@
     description = "Hans Christian v. Stockhausen";
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
-    # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../home/hcvst/ssh.pub);
-    hashedPasswordFile = config.sops.secrets."hashedPassword".path;
+    hashedPassword = lib.mkDefault "$y$j9T$prwAj9dAN8ET411Gdj0tJ0$z6cXxOdGEjqpnOIq1yRxpnAl4msZEUSZqdx92YVhatB";
   };
 
   programs.zsh.enable = true;

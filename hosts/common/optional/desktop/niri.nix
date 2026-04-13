@@ -1,5 +1,5 @@
 { pkgs, ... }:
-rec {
+{
   programs.niri.enable = true;
 
   services.greetd = {
@@ -11,13 +11,10 @@ rec {
       };
     };
   };
-
-  security.polkit.enable = true; # polkit
-  services.gnome.gnome-keyring.enable = true; # secret service
-  security.pam.services.swaylock = { };
-
+  
   users.users.greeter = { };
 
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.swaylock = { };
 }
-
-## SEE https://d19qhx4ioawdt7.cloudfront.net/docs/nix-home-manager-sway.html

@@ -274,5 +274,6 @@
     tree
     wget
     zk
+    nixos-anywhere
   ];
 }

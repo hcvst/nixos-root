@@ -1,4 +1,5 @@
-{pkgs, ...}: rec {
+{ pkgs, ... }:
+{
   programs.dconf.enable = true;
 
   services.greetd = {
@@ -10,9 +11,12 @@
       };
     };
   };
+  
+  users.users.greeter = { };
 
   security.polkit.enable = true;
-  security.pam.services.swaylock = {};
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.swaylock = { };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
@@ -22,14 +26,5 @@
     sway
     wl-clipboard
   ];
-
-  # Enable the gnome-keyring secrets vault.
-  # Will be exposed through DBus to programs willing to store secrets.
-  services.gnome.gnome-keyring.enable = true;
-
-  users.users.greeter = {};
 }
-
-
-
 ## SEE https://d19qhx4ioawdt7.cloudfront.net/docs/nix-home-manager-sway.html

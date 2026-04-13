@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   hostname,
   pkgs,
@@ -8,19 +9,14 @@
   imports = [
     ../common/optional/comin.nix
     ../common/users/hcvst.nix
+    ../common/optional/desktop/niri.nix
+    # ../common/optional/desktop/sway.nix
     ./disko-config.nix
     ./hardware-configuration.nix
     ./zfs.nix
     ./impermanence.nix
     ./sops.nix
-    # ./sway-requirements.nix
-    ./niri-requirements.nix
   ];
-
-  # boot.loader.grub = {
-  #   efiSupport = true;
-  #   efiInstallAsRemovable = true;
-  # };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -82,5 +78,4 @@
   ];
 
   system.stateVersion = "25.11";
-
 }
