@@ -17,13 +17,19 @@ nix run github:nix-community/nixos-anywhere -- --flake .#ulthc \
 
 See `deploy-ulthc.sh` for deployment prep and actual deployment.
 
-## From install USB
+## Via install USB
 ```
 nix run github:nix-community/disko -- \
   --flake github:hcvst/nixos-root#HOST \
   --mode disko
 ```
-
 Will prompt for disk ecryption password
 
-`nixos-install --flake github:hcvst/nixos-root#HOS`
+`nixos-install --flake github:hcvst/nixos-root#HOST`
+
+## Create wsl image
+Build with 
+`sudo nix run .#nixosConfigurations.HOST.config.system.build.tarballBuilder`
+
+Install on Windows with
+`wsl --install --from-file nixos.wsl`
