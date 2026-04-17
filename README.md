@@ -33,3 +33,14 @@ Build with
 
 Install on Windows with
 `wsl --install --from-file nixos.wsl`
+
+## Homemanager Generic
+To only run the homemanager config on non-nixos such as Ubuntu, for example:
+
+Initially
+`nix run home-manager/master -- switch --flake .#hcvst`
+- or - 
+`nix run .#homeConfiguration.hcvst.activationPackage`
+
+Subsequently 
+`home-manager switch --flake .#hcvst`

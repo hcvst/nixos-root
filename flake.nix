@@ -52,7 +52,16 @@
         uwshh = mkHost "uwshh";
         ultkv = mkHost "ultkv";
         ummhc = mkHost "ummhc";
-        #sgihc = mkHost "sgihc";
+        #sbbhc = mkHost "sbbhc";
+      };
+
+      # `nix run home-manager/master -- switch --flake .#hcvst`
+      # or `nix run .#homeConfiguration.hcvst.activationPackage`
+      homeConfigurations = {
+        hcvst = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [ ./home/hcvst/generic.nix ];
+        };
       };
     };
 }
