@@ -11,7 +11,7 @@
       };
     };
   };
-  
+
   users.users.greeter = { };
 
   security.polkit.enable = true;

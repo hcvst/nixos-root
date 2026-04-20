@@ -17,6 +17,16 @@ nix run github:nix-community/nixos-anywhere -- --flake .#ulthc \
 
 See `deploy-ulthc.sh` for deployment prep and actual deployment.
 
+## Remote switch
+```
+sudo nixos-rebuild switch \
+  --flake .#uhvhc \
+  --target-host nixos@192.168.1.121 \
+  --use-remote-sudo \
+  --ask-sudo-password \
+  --build-host localhost
+```
+
 ## Via install USB
 ```
 nix run github:nix-community/disko -- \
@@ -37,10 +47,13 @@ Install on Windows with
 ## Homemanager Generic
 To only run the homemanager config on non-nixos such as Ubuntu, for example:
 
+Expand disk
+install nerdfonts
+
 Initially
 `nix run home-manager/master -- switch --flake .#hcvst`
 - or - 
-`nix run .#homeConfiguration.hcvst.activationPackage`
+`nix run .#homeConfigurations.hcvst.activationPackage`
 
 Subsequently 
 `home-manager switch --flake .#hcvst`

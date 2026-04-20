@@ -2,6 +2,6 @@
 {
   imports = [
     ./global
-    ./features/compositors/niri
+    ./features/desktop/niri
   ];
 }

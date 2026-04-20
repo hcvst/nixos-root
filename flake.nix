@@ -47,6 +47,7 @@
     {
       # nixos-anywhere --flake .#ulthc --generate-hardware-config nixos-generate-config ./hosts/ulthc/hardware-configuration.nix <hostname>
       nixosConfigurations = {
+        uhvhc = mkHost "uhvhc";
         ulthc = mkHost "ulthc";
         uwshc = mkHost "uwshc";
         uwshh = mkHost "uwshh";
@@ -56,7 +57,7 @@
       };
 
       # `nix run home-manager/master -- switch --flake .#hcvst`
-      # or `nix run .#homeConfiguration.hcvst.activationPackage`
+      # or `nix run .#homeConfigurations.hcvst.activationPackage`
       homeConfigurations = {
         hcvst = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
