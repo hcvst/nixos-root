@@ -2,6 +2,7 @@
 {
   programs.niri.enable = true;
 
+  boot.plymouth.enable = true; # hide logs behing splash so it doesn't mess up greetd
   services.greetd = {
     enable = true;
     settings = {
