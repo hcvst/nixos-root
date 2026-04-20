@@ -20,7 +20,9 @@
 
   programs.zsh.enable = true;
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.hcvst = import ../../../home/hcvst/${config.networking.hostName}.nix;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.hcvst = import ../../../home/hcvst/${config.networking.hostName}.nix;
+  };
 }
