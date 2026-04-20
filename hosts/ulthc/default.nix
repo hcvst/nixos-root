@@ -1,13 +1,15 @@
 {
   config,
   inputs,
+  lib,
   hostname,
   pkgs,
   ...
 }:
 {
   imports = [
-    ../common/optional/comin.nix
+    ../common/global
+    # ../common/optional/comin.nix
     ../common/users/hcvst.nix
     ../common/optional/desktop/niri.nix
     # ../common/optional/desktop/sway.nix
@@ -24,7 +26,7 @@
   networking = {
     hostId = "ECA40995";
     hostName = hostname;
-    useDHCP = true;
+    useDHCP = lib.mkDefault true;
   };
 
   nix.settings.experimental-features = [

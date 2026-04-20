@@ -2,6 +2,8 @@
 {
   users.mutableUsers = false;
 
+  networking.networkmanager.enable = true;
+
   environment.systemPackages = with pkgs; [
     bat
     #   devenv

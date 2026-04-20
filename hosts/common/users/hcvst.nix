@@ -14,7 +14,7 @@
     isNormalUser = true;
     description = "Hans Christian v. Stockhausen";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     hashedPassword = lib.mkDefault "$y$j9T$prwAj9dAN8ET411Gdj0tJ0$z6cXxOdGEjqpnOIq1yRxpnAl4msZEUSZqdx92YVhatB";
   };
 
