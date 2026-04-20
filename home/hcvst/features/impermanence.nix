@@ -1,11 +1,6 @@
 { inputs, ... }:
 {
-  imports = [
-    inputs.impermanence.homeManagerModules.impermanence
-  ];
-
-  home.persistence."/persist/home/hcvst" = {
-    allowOther = true;
+  home.persistence."/persist" = {
 
     directories = [
       "Projects"
