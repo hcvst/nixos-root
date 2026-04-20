@@ -14,6 +14,8 @@ nix run github:nix-community/nixos-anywhere -- --flake .#ulthc \
   --generate-hardware-config nixos-generate-config \
   ./hosts/ulthc/hardware-configuration.nix --target-host <user>@<hostname>
 ```
+WARNING: The above does not copy the keys such as `ulthc_host_ed25519
+to `/persist/etc/ssh` on the deploy target. FIXME document properly.
 
 See `deploy-ulthc.sh` for deployment prep and actual deployment.
 
@@ -22,7 +24,7 @@ See `deploy-ulthc.sh` for deployment prep and actual deployment.
 sudo nixos-rebuild switch \
   --flake .#uhvhc \
   --target-host nixos@192.168.1.121 \
-  --use-remote-sudo \
+  --sudo \
   --ask-sudo-password \
   --build-host localhost
 ```
