@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, lib, pkgs, ... }:
 {
 
   imports = [
@@ -25,6 +25,7 @@
   };
 
   fileSystems."/persist".neededForBoot = true;
+  fileSystems."/home".neededForBoot = true;
   
   environment.persistence."/persist" = {
     hideMounts = true;
