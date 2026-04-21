@@ -4,6 +4,7 @@
   imports = [
     ../../common/optional/starship.nix
     ../../common/optional/xdg.nix
+    ../../common/optional/zk.nix
   ];
 
   home.username = "hcvst";
@@ -57,20 +58,6 @@
     enable = true;
     defaultEditor = true;
     vimAlias = true;
-    plugins = with pkgs.vimPlugins; [ zk-nvim ];
-    extraLuaConfig = ''
-      require("zk").setup({
-        picker = "fzf",
-        lsp = {
-          config = {
-            name = "zk",
-            cmd = { "zk", "lsp" },
-            filetypes = { "markdown" },
-          },
-          auto_attach = { enabled = true },
-        },
-      })
-    '';
   };
 
   home.packages = with pkgs; [

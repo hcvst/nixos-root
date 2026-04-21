@@ -6,6 +6,7 @@
       "Projects"
       "Documents"
       "Downloads"
+      "Zettelkasten"
       ".ssh"
       ".gnupg"
       ".config/gh"
