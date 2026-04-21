@@ -5,6 +5,7 @@
 keys:
   - &hcvst_user age1re53jflrhfmdd0s3zzae6jd8wzvpxz3p7u4rgcajngdmg8qf95kqlvg4cr
   - &hcvst_host age1cqxpx2mgs4ae5dpgrf62qzf6sxephv2dtaw24el5py7yj9va44qsqky4fd
+  - &hcvst_generic age1lk4kt296ypzaztk3e3p5w9r7gav5pu2u00flxl7pjgpn7vjm5gyqde48e3
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$
@@ -12,3 +13,4 @@ creation_rules:
       - age:
           - *hcvst_user
           - *hcvst_host
+          - *hcvst_generic
