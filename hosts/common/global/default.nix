@@ -2,6 +2,8 @@
 {
   users.mutableUsers = false;
 
+  time.timeZone = "Africa/Johannesburg";
+
   networking.networkmanager.enable = true;
 
   environment.systemPackages = with pkgs; [
