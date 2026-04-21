@@ -3,6 +3,7 @@
 
   imports = [
     ../../common/optional/starship.nix
+    ../../common/optional/xdg.nix
   ];
 
   home.username = "hcvst";
