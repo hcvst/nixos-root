@@ -13,6 +13,8 @@
       ".local/share/fish" # fish history
     ];
 
-    files = [ ]; # add as you discover needs
+    files = [
+      ".config/pet/snippet.toml"
+     ]; 
   };
 }
