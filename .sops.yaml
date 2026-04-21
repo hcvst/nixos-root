@@ -1,4 +1,3 @@
-#nd the l Generate new hosts ssh host key
 # ssh-keygen -t ed25519 -N "" -C "hcvst@<hostname>" -f ~/.ssh/<hostname>_host_ed25519
 # Derive age public keys for user and host
 # cat ~/.ssh/id_ed25519.pub | ssh-to-age
@@ -8,7 +7,7 @@ keys:
   - &hcvst_host age1cqxpx2mgs4ae5dpgrf62qzf6sxephv2dtaw24el5py7yj9va44qsqky4fd
 
 creation_rules:
-  - path_regex: secrets/hcvst\.yaml$
+  - path_regex: secrets/secrets\.yaml$
     key_groups:
       - age:
           - *hcvst_user

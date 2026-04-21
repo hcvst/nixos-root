@@ -5,7 +5,7 @@
   ];
 
   sops = {
-    defaultSopsFile = ../../secrets/hcvst.yaml;
+    defaultSopsFile = ../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
 
     # Derive age key from the persisted SSH host key
@@ -14,7 +14,7 @@
     age.generateKey = false;
 
     secrets = {
-      "hashedPassword".neededForUsers = true; # decrypted early enough for user activation
+      "hcvst/hashedPassword".neededForUsers = true; # decrypted early enough for user activation
       # "hcvst/gh-token" = {
       #   owner = "hcvst";
       #   path  = "/persist/home/hcvst/.config/gh/hosts.yml";

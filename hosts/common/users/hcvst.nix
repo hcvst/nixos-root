@@ -24,5 +24,8 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.hcvst = import ../../../home/hcvst/${config.networking.hostName}.nix;
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
   };
 }
