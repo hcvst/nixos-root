@@ -60,6 +60,7 @@
     ./performance.nix
     ../common/users/kvst.nix
     ../common/users/hcvst.nix
+    ../common/optional/tailscale.nix
   ];
 
   # ---------------------------------------------------------------------------
