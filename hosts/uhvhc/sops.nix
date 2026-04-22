@@ -22,5 +22,5 @@
     };
   };
 
-  users.users.hcvst.hashedPasswordFile = config.sops.secrets."hashedPassword".path;
+  users.users.hcvst.hashedPasswordFile = config.sops.secrets."hcvst/hashedPassword".path;
 }
