@@ -31,6 +31,20 @@
       lla = "${pkgs.eza}/bin/eza -la";
       nhos = "${pkgs.nh}/bin/nh os switch";
     };
+    initContent = ''
+      # pick a recent file and open in nvim
+      v() {
+        local file
+        file=$(
+          nvim --headless +'lua for _, f in ipairs(vim.v.oldfiles) do print(vim.fn.fnamemodify(f, ":p")) end' +q 2>&1 |
+          tr -d '\r' |
+          awk 'NF && !seen[$0]++' |
+          while IFS= read -r f; do [[ -f "$f" ]] && echo "$f"; done |
+          fzf --height 40% --reverse --preview 'bat --color=always --line-range=:50 {} 2>/dev/null || cat {}'
+        )
+        [[ -n "$file" ]] && nvim "$file"
+      }
+    '';
   };
 
   programs.direnv = {
@@ -58,6 +72,30 @@
     enable = true;
     defaultEditor = true;
     vimAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      telescope-nvim      # for interactive pickers
+      plenary-nvim        # telescope dependency
+      blink-cmp           # autocomplete for [[
+    ];
+    extraLuaConfig = ''
+      vim.g.mapleader = "\\"
+      vim.g.maplocalleader = "\\"
+
+      vim.keymap.set("n", "<leader>v", "<Cmd>Telescope oldfiles<CR>")
+
+      -- added to autocomplete links like [[note name]] in zk markdown files
+      require("blink.cmp").setup({
+        keymap = {
+          preset = "default",
+          ["<CR>"] = { "accept", "fallback" },
+          ["<Tab>"] = { "select_next", "fallback" },
+          ["<S-Tab>"] = { "select_prev", "fallback" },
+        },
+        sources = {
+          default = { "lsp" }
+        },
+      })
+    '';
   };
 
   home.packages = with pkgs; [

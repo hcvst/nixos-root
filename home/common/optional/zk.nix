@@ -69,6 +69,8 @@
       ---
 
       # {{format-date now "full"}}
+      ## Todo
+      - 
 
       ## Notes
 
@@ -79,14 +81,8 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       zk-nvim
-      telescope-nvim      # for interactive pickers
-      plenary-nvim        # telescope dependency
-      blink-cmp           # autocomplete for [[
     ];
     extraLuaConfig = ''
-      vim.g.mapleader = "\\"
-      vim.g.maplocalleader = "\\"
-
       vim.opt.conceallevel = 2
       vim.opt.concealcursor = "" 
 
@@ -99,18 +95,6 @@
             filetypes = { "markdown" },
           },
           auto_attach = { enabled = true },
-        },
-      })
-
-      require("blink.cmp").setup({
-        keymap = {
-          preset = "default",
-          ["<CR>"] = { "accept", "fallback" },
-          ["<Tab>"] = { "select_next", "fallback" },
-          ["<S-Tab>"] = { "select_prev", "fallback" },
-        },
-        sources = {
-          default = { "lsp", "path", "buffer" }
         },
       })
 
