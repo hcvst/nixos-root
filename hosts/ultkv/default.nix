@@ -35,6 +35,37 @@
     ../common/users/hcvst.nix
   ];
 
+# ---------------------------------------------------------------------------
+  # Bluetooth
+  #
+  # The bluez stack with auto-enable and power-on-boot so trusted devices
+  # (mouse, headphones) reconnect without manual intervention. blueman
+  # (enabled above, next to imports for visibility since it's the user-
+  # facing half) provides the XFCE tray applet for pairing and management.
+  #
+  # Experimental = true enables battery percentage reporting for devices
+  # that expose it over the BAS GATT characteristic — most modern BLE
+  # headphones and mice. AutoEnable reconnects trusted devices on adapter
+  # power-up. JustWorksRepairing avoids re-pairing prompts for devices
+  # that advertise "just works" pairing (common for audio peripherals).
+  # ---------------------------------------------------------------------------
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = "true";
+        JustWorksRepairing = "always";
+      };
+      Policy = {
+        AutoEnable = "true";
+      };
+    };
+  };
+
+  services.blueman.enable = true;
+
   # ---------------------------------------------------------------------------
   # Bootloader
   #
