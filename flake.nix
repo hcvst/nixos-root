@@ -34,10 +34,13 @@
       ...
     }@inputs:
     let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+
       mkHost =
         hostname:
         nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           modules = [ ./hosts/${hostname} ];
           specialArgs = {
             inherit inputs hostname;
@@ -59,13 +62,18 @@
       # or `nix run .#homeConfigurations.hcvst.activationPackage`
       homeConfigurations = {
         hcvst = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          inherit pkgs;
           modules = [
             ./home/hcvst/generic.nix
             inputs.sops-nix.homeManagerModules.sops
           ];
-
         };
       };
+
+      # `nix run .#fetchkeys -- <user>@<host>`
+      apps.${system} = builtins.mapAttrs (name: pkg: {
+        type = "app";
+        program = "${pkg}/bin/${name}";
+      }) (import ./apps { inherit pkgs; });
     };
 }
