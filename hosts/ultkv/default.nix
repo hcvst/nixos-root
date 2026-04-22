@@ -10,9 +10,36 @@
 # as "what is this machine for" rather than "how is it tuned".
 # =============================================================================
 
-{ hostname, config, pkgs, ... }:
+{
+  hostname,
+  config,
+  pkgs,
+  ...
+}:
 
 {
+
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      auto-optimise-store = true;
+      warn-dirty = false;
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+  };
+
   # ---------------------------------------------------------------------------
   # Imports
   #
@@ -35,7 +62,7 @@
     ../common/users/hcvst.nix
   ];
 
-# ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
   # Bluetooth
   #
   # The bluez stack with auto-enable and power-on-boot so trusted devices
@@ -116,7 +143,10 @@
   # ---------------------------------------------------------------------------
   services.xserver = {
     enable = true;
-    xkb = { layout = "za"; variant = ""; };
+    xkb = {
+      layout = "za";
+      variant = "";
+    };
     desktopManager.xfce.enable = true;
   };
 
@@ -166,7 +196,11 @@
   #   8000  — local development server (ad-hoc use)
   #   53317 — LocalSend (LAN file transfer, TCP + UDP)
   # ---------------------------------------------------------------------------
-  networking.firewall.allowedTCPPorts = [ 22 8000 53317 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    8000
+    53317
+  ];
   networking.firewall.allowedUDPPorts = [ 53317 ];
 
   # ---------------------------------------------------------------------------
