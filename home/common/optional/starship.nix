@@ -1,5 +1,18 @@
-{ ... }:
+{ pkgs, ... }:
+
+let
+  plainConfig = pkgs.runCommand "starship-plain.toml" { } ''
+    ${pkgs.starship}/bin/starship preset no-nerd-font > $out
+  '';
+in
 {
+
+  home.file.".config/starship-plain.toml".source = plainConfig;
+
+  programs.zsh.shellAliases = {
+    plain = "STARSHIP_CONFIG=$HOME/.config/starship-plain.toml exec zsh";
+  };
+
   programs.starship = {
     enable = true;
     enableTransience = true;
