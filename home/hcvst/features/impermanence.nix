@@ -16,6 +16,7 @@
 
     files = [
       ".config/pet/snippet.toml"
+      ".zsh_history"
      ]; 
   };
 }
