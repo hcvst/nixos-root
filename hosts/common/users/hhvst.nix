@@ -22,7 +22,12 @@
 
   programs.zsh.enable = true;
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.hhvst = import ../../../home/hhvst/${config.networking.hostName}.nix;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.hhvst = import ../../../home/hhvst/${config.networking.hostName}.nix;
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
+  };
 }
