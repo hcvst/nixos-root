@@ -56,6 +56,7 @@
         uwshh = mkHost "uwshh";
         ultkv = mkHost "ultkv";
         ummhc = mkHost "ummhc";
+        sbbhc = mkHost "sbbhc";
       };
 
       # `nix run home-manager/master -- switch --flake .#hcvst`
