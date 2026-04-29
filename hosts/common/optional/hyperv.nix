@@ -1,5 +1,8 @@
 { lib, ... }:
 {
+
+  virtualisation.hypervGuest.enable = true;
+  
   services.xrdp = {
     enable = true;
     defaultWindowManager = "i3";
