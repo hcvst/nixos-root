@@ -75,11 +75,17 @@
     plugins = with pkgs.vimPlugins; [
       telescope-nvim      # for interactive pickers
       plenary-nvim        # telescope dependency
+      gruvbox-nvim 
       blink-cmp           # autocomplete for [[
     ];
     extraLuaConfig = ''
       vim.g.mapleader = "\\"
       vim.g.maplocalleader = "\\"
+      vim.opt.undofile = true
+      vim.opt.number = true
+      vim.opt.termguicolors = true
+      vim.opt.background = "dark"
+      vim.cmd.colorscheme("gruvbox")
 
       vim.keymap.set("n", "<leader>v", "<Cmd>Telescope oldfiles<CR>")
 
