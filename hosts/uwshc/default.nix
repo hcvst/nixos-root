@@ -12,6 +12,7 @@
     inputs.nixos-wsl.nixosModules.default
     ../common/global
     ../common/optional/comin.nix
+    ../common/optional/docker-rootless.nix
     ../common/users/hcvst.nix
     ../common/users/hhvst.nix
   ];
@@ -24,12 +25,16 @@
     useDHCP = true;
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    trusted-users = [ "hcvst" ]; # required for devenv cache
+#    substituters = [ "http://sbbhc?priority=30" ];
+#    trusted-public-keys = [ "sbbhc:YOZ1ORsRs/MLb1FbmVW2sOoxGgpPceKlH2JFewMkSJU=" ];
+  };
 
-  nix.settings.trusted-users = [ "hcvst" ]; # required for devenv cache
 
   environment.localBinInPath = true;
 
