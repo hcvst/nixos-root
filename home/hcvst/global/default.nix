@@ -89,9 +89,10 @@
     defaultEditor = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
+      neo-tree-nvim       # file browser
       telescope-nvim      # for interactive pickers
       plenary-nvim        # telescope dependency
-      gruvbox-nvim 
+      gruvbox-nvim        # theme
       blink-cmp           # autocomplete for [[
     ];
     extraLuaConfig = ''
@@ -99,11 +100,17 @@
       vim.g.maplocalleader = "\\"
       vim.opt.undofile = true
       vim.opt.number = true
+      vim.opt.mouse = ""
       vim.opt.termguicolors = true
       vim.opt.background = "dark"
       vim.cmd.colorscheme("gruvbox")
 
       vim.keymap.set("n", "<leader>v", "<Cmd>Telescope oldfiles<CR>")
+      vim.keymap.set("n", "<leader>fr", "<Cmd>Telescope oldfiles<CR>")
+      vim.keymap.set("n", "<leader>fb", "<Cmd>Telescope buffers<CR>")
+      vim.keymap.set("n", "<leader>ff", "<Cmd>Telescope find_files<CR>")
+      vim.keymap.set("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>")
+      vim.keymap.set("n", "<leader><leader>", "<Cmd>Neotree toggle<CR>")
 
       -- added to autocomplete links like [[note name]] in zk markdown files
       require("blink.cmp").setup({
@@ -116,6 +123,14 @@
         sources = {
           default = { "lsp" }
         },
+      })
+
+      require("neo-tree").setup({
+        filesystem = {
+          follow_current_file = {
+	    enabled = true,
+	  },
+	},
       })
     '';
   };
