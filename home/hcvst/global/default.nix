@@ -147,9 +147,10 @@
     lld
     mdcat
     nixfmt-rfc-style
+    nixos-anywhere
+    ripgrep
     tree
     wget
     zk
-    nixos-anywhere
   ];
 }
