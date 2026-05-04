@@ -68,6 +68,20 @@
     enableZshIntegration = true;
   };
 
+  programs.tmux= {
+    enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      resurrect
+      continuum
+      catppuccin
+    ];
+    extraConfig = ''
+      set -g @catppucin_flavour 'mocha'
+      set -g mouse off
+    '';
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
