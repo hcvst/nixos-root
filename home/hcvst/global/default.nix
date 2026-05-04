@@ -82,6 +82,8 @@
     '';
   };
 
+  programs.nix-index-database.comma.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;

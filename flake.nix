@@ -18,6 +18,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -67,6 +71,7 @@
           modules = [
             ./home/hcvst/generic.nix
             inputs.sops-nix.homeManagerModules.sops
+	    inputs.nix-index-database.homeModules.default
           ];
         };
       };

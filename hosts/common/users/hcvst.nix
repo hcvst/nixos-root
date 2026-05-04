@@ -26,6 +26,7 @@
     users.hcvst = import ../../../home/hcvst/${config.networking.hostName}.nix;
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
+      inputs.nix-index-database.homeModules.default
     ];
   };
 }
