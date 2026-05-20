@@ -112,6 +112,7 @@
       vim.keymap.set("n", "<leader>ff", "<Cmd>Telescope find_files<CR>")
       vim.keymap.set("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>")
       vim.keymap.set("n", "<leader><leader>", "<Cmd>Neotree toggle<CR>")
+      vim.keymap.set("n", "<leader>r", "<Cmd>Neotree reveal_force_cwd<CR>")
 
       -- added to autocomplete links like [[note name]] in zk markdown files
       require("blink.cmp").setup({
