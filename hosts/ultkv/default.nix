@@ -214,6 +214,7 @@
 
   environment.systemPackages = with pkgs; [
     brave
+    firefox
     git
     libreoffice
     networkmanagerapplet
