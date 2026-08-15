@@ -7,6 +7,7 @@ keys:
   - &hcvst_host age1cqxpx2mgs4ae5dpgrf62qzf6sxephv2dtaw24el5py7yj9va44qsqky4fd
   - &hcvst_generic age1lk4kt296ypzaztk3e3p5w9r7gav5pu2u00flxl7pjgpn7vjm5gyqde48e3
   - &hcvst_ultkv age1p7hkzkr92kmjl0wm48pjhjd9v329k4x4udmeem8ztpvvqs3vqv8qw029wu
+  - &hcvst_sheba age1sjh23dru0w6c4gz9slmx0td0hxsv2xterymcycgc9dvc4e2plq4qh2jed3
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$
@@ -16,3 +17,4 @@ creation_rules:
           - *hcvst_host
           - *hcvst_generic
           - *hcvst_ultkv
+          - *hcvst_sheba

@@ -8,15 +8,16 @@
 ## Configuration Health check
 `nix flake check`
 
+or to only check a specific output, e.g. for the `sheba` host run:
+
+`nix eval .#nixosConfigurations.sheba.config.system.build.toplevel.drvPath`
+
 ## nixos-anywhere
 ```
 nix run github:nix-community/nixos-anywhere -- --flake .#ulthc \
   --generate-hardware-config nixos-generate-config \
   ./hosts/ulthc/hardware-configuration.nix --target-host <user>@<hostname>
 ```
-WARNING: The above does not copy the keys such as `ulthc_host_ed25519
-to `/persist/etc/ssh` on the deploy target. FIXME document properly.
-
 See `deploy-ulthc.sh` for deployment prep and actual deployment.
 
 ## Remote switch
