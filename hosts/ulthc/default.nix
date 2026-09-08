@@ -12,8 +12,6 @@
     # ../common/optional/comin.nix
     ../common/users/hcvst.nix
     ../common/optional/tailscale.nix
-    ../common/optional/desktop/niri.nix
-    # ../common/optional/desktop/sway.nix
     ./disko-config.nix
     ./hardware-configuration.nix
     ./zfs.nix
