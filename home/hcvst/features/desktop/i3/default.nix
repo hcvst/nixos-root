@@ -1,3 +1,5 @@
+# Pairs with hosts/common/optional/desktop/i3.nix — import both.
+# This half only writes config; without the host half nothing starts the session.
 { pkgs, lib, ... }:
 
 let

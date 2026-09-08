@@ -1,3 +1,5 @@
+# Pairs with home/<user>/features/desktop/i3 — import both.
+# This half enables X, the display manager and the i3 session; the home half writes the user config.
 { pkgs, ... }:
 {
   services.xserver = {

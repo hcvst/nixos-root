@@ -1,3 +1,5 @@
+# Pairs with hosts/common/optional/desktop/niri.nix — import both.
+# This half only writes config; without the host half nothing starts the session.
 { pkgs, ... }:
 {
   xdg.configFile."niri/config.kdl".source = ./config.kdl;

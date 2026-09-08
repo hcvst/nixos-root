@@ -1,3 +1,5 @@
+# Pairs with home/<user>/features/desktop/sway — import both.
+# This half installs sway and enables the greeter; the home half writes the user config.
 { pkgs, ... }:
 {
   programs.dconf.enable = true;

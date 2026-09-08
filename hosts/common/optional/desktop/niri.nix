@@ -1,3 +1,5 @@
+# Pairs with home/<user>/features/desktop/niri — import both.
+# This half enables the compositor and greeter; the home half writes the user config.
 { pkgs, ... }:
 {
   programs.niri.enable = true;
