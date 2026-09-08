@@ -19,6 +19,8 @@
 
   wsl.enable = true;
   wsl.defaultUser = "hcvst";
+  wsl.interop.includePath = false;
+  wsl.wslConf.interop.appendWindowsPath = false;
 
   networking = {
     hostName = hostname;
