@@ -51,3 +51,11 @@ nixos-anywhere \
   --extra-files "$STAGING/extra-files" \
   --disk-encryption-keys /tmp/secret.key <(read -rsp "ZFS passphrase: " p && echo -n "$p") \
   root@"$TARGET"
+
+cat <<MSG
+
+Deployed. If $HOST is to have Home Manager secrets, add its user key to
+.sops.yaml as hcvst_$HOST — see secrets/README.md ("Onboarding a host").
+Reusing your existing ~/.ssh/id_ed25519 needs no re-encryption; a new key does.
+
+MSG
