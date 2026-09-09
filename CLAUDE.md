@@ -38,10 +38,11 @@ alias is `nh os switch`):
 sudo nixos-rebuild switch --flake .#<host>
 ```
 
-Remote build-and-switch from a faster machine:
+Remote build-and-switch onto a machine that already runs NixOS — builds locally, copies the
+closure over ([rebuild.sh](rebuild.sh); `--list` shows known hosts, default action is `boot`):
 
 ```bash
-sudo nixos-rebuild switch --flake .#uhvhc --target-host nixos@<ip> --sudo --ask-sudo-password --build-host localhost
+./rebuild.sh ultkv kvst@192.168.1.113 switch
 ```
 
 Standalone Home Manager (non-NixOS hosts): `home-manager switch --flake .#hcvst`, first-time

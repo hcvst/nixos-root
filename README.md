@@ -21,14 +21,16 @@ nix run github:nix-community/nixos-anywhere -- --flake .#ulthc \
 See `deploy.sh` for deployment prep and actual deployment.
 
 ## Remote switch
+Build here, activate on a machine that already runs NixOS:
 ```
-sudo nixos-rebuild switch \
-  --flake .#uhvhc \
-  --target-host nixos@192.168.1.121 \
-  --sudo \
-  --ask-sudo-password \
-  --build-host localhost
+./rebuild.sh <hostname> <user@target> [boot|switch|test|dry-activate]
+
+./rebuild.sh ultkv kvst@192.168.1.113           # default action: boot
+./rebuild.sh uhvhc nixos@192.168.1.121 switch
 ```
+The build is local and only the closure is copied, which matters for slow
+targets. `./rebuild.sh --list` shows the known hosts, `--help` the build-location
+options (`--build-on-target`, `--build-host`); it prints the nixos-rebuild command it runs.
 
 ## Via install USB
 ```
