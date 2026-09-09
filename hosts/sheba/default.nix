@@ -12,6 +12,7 @@
     # ../common/optional/comin.nix
     ../common/users/hcvst.nix
     ../common/optional/tailscale.nix
+    ../common/optional/docker.nix
     # ../common/optional/desktop/niri.nix
     # ../common/optional/desktop/sway.nix
     ./disko-config.nix
@@ -49,8 +50,11 @@
     "igb"
   ];
   boot.kernelParams = [
-    "ip=135.181.139.103::135.181.139.65:255.255.255.192::enp0s4:off"
+    "ip=65.108.30.27::65.108.30.17:255.255.255.192::enp0s4:off"
   ];
+
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+
   boot.initrd.network = {
     enable = true;
     ssh = {

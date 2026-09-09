@@ -40,8 +40,6 @@
       "/etc/machine-id"
       "/etc/ssh/ssh_host_ed25519_key"
       "/etc/ssh/ssh_host_ed25519_key.pub"
-      # "/etc/ssh/ulthc_host_ed25519" # this nor sheba should probably exist
-      # "/etc/ssh/ulthc_host_ed25519.pub" # claude assumes that this was copied at some point using nixos-anywhere --extra-files perhaps
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
     ];
