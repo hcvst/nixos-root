@@ -18,7 +18,7 @@ nix run github:nix-community/nixos-anywhere -- --flake .#ulthc \
   --generate-hardware-config nixos-generate-config \
   ./hosts/ulthc/hardware-configuration.nix --target-host <user>@<hostname>
 ```
-See `deploy-ulthc.sh` for deployment prep and actual deployment.
+See `deploy.sh` for deployment prep and actual deployment.
 
 ## Remote switch
 ```
