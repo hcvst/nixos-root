@@ -19,6 +19,7 @@
     ./hardware-configuration.nix
     ./zfs.nix
     ./impermanence.nix
+    ./tls-clienthello.nix
     ./sops.nix
   ];
 
