@@ -9,7 +9,7 @@
     defaultSopsFormat = "yaml";
 
     # Derive age key from the persisted SSH host key
-    age.sshKeyPaths = [ "/persist/etc/ssh/ulthc_host_ed25519" ];
+    age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
     # age.keyFile = "/persist/var/lib/sops-nix/key.txt";
     age.generateKey = false;
 
