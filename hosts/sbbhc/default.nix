@@ -54,6 +54,17 @@
   services.cron.enable = true;
   services.openssh.enable = true;
 
+  # Exit node + subnet router for the LAN it sits on. Both must also be approved in the
+  # Tailscale admin console (machine -> Edit route settings). extraSetFlags runs
+  # `tailscale set` on every boot; extraUpFlags would not, as they only apply at login.
+  services.tailscale = {
+    useRoutingFeatures = "server"; # enables IP forwarding, loosens rp_filter
+    extraSetFlags = [
+      "--advertise-exit-node"
+      "--advertise-routes=192.168.178.0/24"
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     bat
     #   devenv
