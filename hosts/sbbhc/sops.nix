@@ -27,8 +27,9 @@
 
   users.users.hcvst.hashedPasswordFile = config.sops.secrets."hcvst/hashedPassword".path;
 
-  services.tailscale = {
-    authKeyFile = config.sops.secrets."sbbhc/tailscale-authkey".path;
-    authKeyParameters.preauthorized = true;
-  };
+  # No authKeyParameters: they append "?key=value" to the key, which is only valid for
+  # OAuth client secrets. A plain tskey-auth key is then rejected as "invalid key".
+  # The key is single-use and only matters on a fresh install; afterwards the login
+  # lives in the persisted /var/lib/tailscale and the autoconnect unit is a no-op.
+  services.tailscale.authKeyFile = config.sops.secrets."sbbhc/tailscale-authkey".path;
 }
