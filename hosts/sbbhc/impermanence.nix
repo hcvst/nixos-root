@@ -32,6 +32,7 @@
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/tailscale"
+      "/var/lib/comin" # repo clone + deploy state, avoids a re-clone/redeploy on every boot
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
     ];

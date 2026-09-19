@@ -68,7 +68,7 @@ Modules are split three ways, following the Misterio77/nix-config layout:
 
 - `common/global/` — imported by every host/user unconditionally.
 - `common/optional/` — opt-in features a host imports explicitly (`tailscale.nix`, `docker.nix`,
-  `docker-rootless.nix`, `comin.nix`, `binary-cache.nix`, `hyperv.nix`, `desktop/{i3,niri,sway}.nix`).
+  `docker-rootless.nix`, `comin.nix`, `hyperv.nix`, `desktop/{i3,niri,sway}.nix`).
 - `hosts/<hostname>/` — machine-specific: `default.nix`, `hardware-configuration.nix` (generated,
   don't hand-edit), and where applicable `disko-config.nix`, `zfs.nix`, `impermanence.nix`, `sops.nix`.
 
@@ -95,7 +95,8 @@ the other hosts too.
 
 ## Impermanence / ZFS hosts
 
-`ulthc`, `sheba`, `sbbhc`, `uhvhc` are ZFS-on-LUKS with an erase-your-darlings setup: an initrd
+`ulthc`, `sheba`, `uhvhc` use ZFS native encryption (`sbbhc` is unencrypted so it can reboot
+unattended), all with an erase-your-darlings setup: an initrd
 systemd service rolls `rpool/local/root` and `rpool/local/home` back to their `@blank` snapshots on
 every boot, and only paths declared in `environment.persistence."/persist"` (system) and
 `home.persistence."/persist"` (user, via `home/hcvst/features/impermanence.nix`) survive.
@@ -145,6 +146,8 @@ your personal one. See [secrets/README.md](secrets/README.md) for the onboarding
 ## GitOps
 
 `hosts/common/optional/comin.nix` runs [comin](https://github.com/nlewo/comin) against
-`github.com/hcvst/nixos-root` branch `main`, so a host importing it auto-deploys on push. Currently
-only `uwshc` has it enabled (it is commented out on `ulthc` and `sheba`) — but keep in mind that
-pushing to `main` can deploy machines.
+`github.com/hcvst/nixos-root` branch `main`, so a host importing it auto-deploys on push (polled
+every 60s, `switch`). Enabled on `uwshc`, `uwshh` and `sbbhc`; commented out on `ulthc`, `sheba`
+and `uhvhc`. **Pushing to `main` deploys machines** — and `sbbhc` is unattended and physically
+out of reach, so a broken `main` can strand it. Comin also watches a per-host `testing-<host>`
+branch with operation `test`, which a reboot undoes; use it for risky `sbbhc` changes.

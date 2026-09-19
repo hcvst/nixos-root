@@ -23,6 +23,7 @@ keys:
   - &host_ulthc    age1cqxpx2mgs4ae5dpgrf62qzf6sxephv2dtaw24el5py7yj9va44qsqky4fd
   - &host_sheba    age1sjh23dru0w6c4gz9slmx0td0hxsv2xterymcycgc9dvc4e2plq4qh2jed3
   - &host_uhvhc    age1zdq30907xjr2rhd5hagy20seg4tuk9chr4f8atgatmcs65xz5pwq32suue
+  - &host_sbbhc    age1c4mafch9a4sheylx3c309q294rvqkz87g3sq4rl0f0jkan7vugaqhhf0ll
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$
@@ -35,3 +36,4 @@ creation_rules:
           - *host_ulthc
           - *host_sheba
           - *host_uhvhc
+          - *host_sbbhc

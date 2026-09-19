@@ -45,11 +45,29 @@ cp "${INITRD_KEY}.pub" "$INITRD_DIR/ssh_host_ed25519_key.pub"
 chmod 600 "$INITRD_KEY"
 
 
+# Optional: a directory tree to restore onto the target, rooted at / (so state goes
+# under persist/...). Used for things that are not in the repo, such as Wi-Fi profiles:
+#   DEPLOY_EXTRA=~/backup/sbbhc-extra ./deploy.sh sbbhc <ip>
+if [ -n "${DEPLOY_EXTRA:-}" ]; then
+  echo "Including extra files from $DEPLOY_EXTRA"
+  cp -a "$DEPLOY_EXTRA"/. "$STAGING/extra-files/"
+fi
+
+# Only ask for a ZFS passphrase if the host's pool is actually encrypted.
+ENCRYPTED=$(nix eval --raw ".#nixosConfigurations.$HOST.config.disko.devices.zpool.rpool.rootFsOptions.encryption" 2>/dev/null || true)
+ENC_ARGS=()
+if [ -n "$ENCRYPTED" ] && [ "$ENCRYPTED" != "off" ]; then
+  read -rsp "ZFS passphrase: " p; echo
+  ENC_ARGS=(--disk-encryption-keys /tmp/secret.key <(echo -n "$p"))
+else
+  echo "$HOST has no ZFS encryption; skipping passphrase."
+fi
+
 echo "Deploying $HOST to $TARGET..."
 nixos-anywhere \
   --flake ".#$HOST" \
   --extra-files "$STAGING/extra-files" \
-  --disk-encryption-keys /tmp/secret.key <(read -rsp "ZFS passphrase: " p && echo -n "$p") \
+  "${ENC_ARGS[@]}" \
   root@"$TARGET"
 
 cat <<MSG

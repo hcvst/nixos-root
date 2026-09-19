@@ -33,8 +33,6 @@
       "flakes"
     ];
     trusted-users = [ "hcvst" ]; # required for devenv cache
-#    substituters = [ "http://sbbhc?priority=30" ];
-#    trusted-public-keys = [ "sbbhc:YOZ1ORsRs/MLb1FbmVW2sOoxGgpPceKlH2JFewMkSJU=" ];
   };
 
 

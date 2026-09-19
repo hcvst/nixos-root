@@ -37,9 +37,8 @@
         mountpoint = "none";
         canmount = "off";
         compression = "zstd";
-        encryption = "aes-256-gcm";
-        keyformat = "passphrase";
-        keylocation = "prompt";
+        # Deliberately unencrypted: the box must come back up unattended after
+        # a power cut, and the realistic threat is the whole machine walking off.
       };
       options = {
         ashift = "12";

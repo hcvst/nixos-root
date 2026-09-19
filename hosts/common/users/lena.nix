@@ -13,7 +13,7 @@
   users.users.lena = {
     isNormalUser = true;
     description = "Lena von Stockhausen";
-    shell = pkgs.zsh; # do we need this, if we have it in home-manager? #FIXME
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" ];
     packages = with pkgs; [
       blockbench

@@ -9,9 +9,8 @@
 {
   imports = [
     ../common/global
-    # ../common/optional/comin.nix
+    ../common/optional/comin.nix # unattended remote box: pushes to main deploy it
     ../common/users/hcvst.nix
-    ../common/optional/binary-cache.nix
     ../common/optional/tailscale.nix
     ../common/optional/desktop/niri.nix
     # ../common/optional/desktop/sway.nix
