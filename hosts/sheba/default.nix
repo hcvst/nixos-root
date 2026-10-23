@@ -11,6 +11,7 @@
     ../common/global
     # ../common/optional/comin.nix
     ../common/users/hcvst.nix
+    ../common/users/philip.nix
     ../common/optional/tailscale.nix
     ../common/optional/docker.nix
     # ../common/optional/desktop/niri.nix
